@@ -1,11 +1,11 @@
 {
  "username": "MarkockiAdam",
- "generated_at": "2026-07-25T05:51:23Z",
+ "generated_at": "2026-07-25T06:30:40Z",
  "range": {
   "from": "2025-07-20",
   "to": "2026-07-25"
  },
- "total": 579,
+ "total": 576,
  "days": [
   {
    "date": "2025-07-20",
@@ -1810,7 +1810,7 @@
   {
    "date": "2026-07-15",
    "level": 1,
-   "count": 14
+   "count": 8
   },
   {
    "date": "2026-07-16",
@@ -1859,8 +1859,8 @@
   },
   {
    "date": "2026-07-25",
-   "level": 0,
-   "count": 0
+   "level": 1,
+   "count": 3
   }
  ]
 }
