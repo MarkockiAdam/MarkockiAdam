@@ -39,17 +39,17 @@ USER = "markockiadam"
 HOST = "github"
 TITLE = "neofetch"
 
-# Curated showcase -- display names, not GitHub slugs. Kept here so the
-# nightly stats refresh cannot replace them with whatever was pushed last.
+# Curated showcase -- (display name, kind). Kept here so the nightly stats
+# refresh cannot replace them with whatever was pushed last.
 PUBLIC_WORK = [
-    "Yoink",
-    "BookWorm",
-    "TimeBox",
-    "TerraCracovianum",
-    "Herkules",
-    "Easel",
-    "FlashBack",
-    "Projekt: Budzet Polski",
+    ("Yoink", "iOS app"),
+    ("BookWorm", "iOS app"),
+    ("TimeBox", ""),
+    ("TerraCracovianum", "website"),
+    ("Herkules", "iOS app"),
+    ("Easel", "iOS app"),
+    ("FlashBack", "iOS app"),
+    ("Projekt: Budzet Polski", "website"),
 ]
 
 # Dot colours for the project list (language colours are no longer shown).
@@ -60,7 +60,6 @@ ROWS = [
     ("kv", "Now", "International Relations @ Cracow University of Economics"),
     ("kv", "Also", "Swift Student Challenge 2026 Winner"),
     ("kv", "Focus", "iOS apps + Polish civic tech"),
-    ("kv", "Stack", "SwiftUI / Swift / TypeScript / Python"),
     ("kv", "Where", "Krakow, Poland"),
     ("kv", "Web", "markockiadam.com"),
     ("gap",),
@@ -137,8 +136,8 @@ def expand(stats):
         elif kind == "gap":
             out.append(("gap",))
         elif kind == "projects":
-            for idx, name in enumerate(PUBLIC_WORK):
-                out.append(("project", name, idx))
+            for idx, (name, label) in enumerate(PUBLIC_WORK):
+                out.append(("project", name, label, idx))
         elif kind == "counters":
             if stats:
                 out.append(("counters", stats))
@@ -231,10 +230,17 @@ def main():
             )
         elif kind == "project":
             name = xu.escape(row[1])
-            colour = PROJECT_DOTS[row[2] % len(PROJECT_DOTS)]
+            label = row[2]
+            colour = PROJECT_DOTS[row[3] % len(PROJECT_DOTS)]
+            kind_tspan = (
+                f'<tspan fill="{DIM}">  {xu.escape(label)}</tspan>' if label else ""
+            )
             a(f'<g{clip}>')
             a(f'<circle cx="{fmt(PAD_X + 3)}" cy="{fmt(y - 3.5)}" r="3.5" fill="{colour}"/>')
-            a(f'<text x="{fmt(PAD_X + 13)}" y="{fmt(y)}" fill="{TEXT}">{name}</text>')
+            a(
+                f'<text x="{fmt(PAD_X + 13)}" y="{fmt(y)}" fill="{TEXT}">{name}'
+                f"{kind_tspan}</text>"
+            )
             a("</g>")
         elif kind == "counters":
             st = row[1]
