@@ -5,9 +5,8 @@ Usage:
     python scripts/make_info_card.py
     STATIC=1 python scripts/make_info_card.py
 
-Writes info-card.svg. Edit ROWS below to change the written content; the
-project list and the counters come from data/profile-stats.json, so they
-refresh themselves.
+Writes info-card.svg. Edit ROWS / PUBLIC_WORK below to change the written
+content. Counters still come from data/profile-stats.json.
 
 Both this and the portrait pad out to theme.CARD_H so they sit level in the
 README table, so the two scripts can run in either order.
@@ -18,7 +17,7 @@ Row kinds:
     ("sec", title)         section heading
     ("bul", text)          bullet line
     ("gap",)               blank line
-    ("projects",)          real repos from data/profile-stats.json
+    ("projects",)          curated showcase from PUBLIC_WORK
     ("counters",)          public repo / star / follower tallies
     ("swatch",)            the colour blocks neofetch prints at the bottom
 """
@@ -28,9 +27,8 @@ import os
 import xml.sax.saxutils as xu
 
 from theme import (
-    AMBER, BLUE, BRIGHT, CARD_H, CYAN, DIM, FALLBACK_LANG_COLOR, GREEN,
-    LANG_COLORS, MONO, MUTED, PURPLE, RED, TEXT, fmt, glow_filter,
-    window_chrome,
+    AMBER, BLUE, BRIGHT, CARD_H, CYAN, DIM, GREEN, MONO, MUTED, PURPLE, RED,
+    TEXT, fmt, glow_filter, window_chrome,
 )
 
 OUT = "info-card.svg"
@@ -40,6 +38,22 @@ STATIC = os.environ.get("STATIC") == "1"
 USER = "markockiadam"
 HOST = "github"
 TITLE = "neofetch"
+
+# Curated showcase -- display names, not GitHub slugs. Kept here so the
+# nightly stats refresh cannot replace them with whatever was pushed last.
+PUBLIC_WORK = [
+    "Yoink",
+    "BookWorm",
+    "TimeBox",
+    "TerraCracovianum",
+    "Herkules",
+    "Easel",
+    "FlashBack",
+    "Projekt: Budzet Polski",
+]
+
+# Dot colours for the project list (language colours are no longer shown).
+PROJECT_DOTS = [GREEN, BLUE, AMBER, PURPLE, CYAN, RED, TEXT, MUTED]
 
 ROWS = [
     ("host",),
@@ -123,8 +137,8 @@ def expand(stats):
         elif kind == "gap":
             out.append(("gap",))
         elif kind == "projects":
-            for repo in (stats or {}).get("recent", [])[:4]:
-                out.append(("repo", repo))
+            for idx, name in enumerate(PUBLIC_WORK):
+                out.append(("project", name, idx))
         elif kind == "counters":
             if stats:
                 out.append(("counters", stats))
@@ -215,22 +229,12 @@ def main():
                 f'<text{clip} x="{fmt(PAD_X)}" y="{fmt(y)}" fill="{DIM}">{marker}'
                 f'<tspan fill="{MUTED}"> {xu.escape(row[1])}</tspan></text>'
             )
-        elif kind == "repo":
-            repo = row[1]
-            colour = LANG_COLORS.get(repo["language"], FALLBACK_LANG_COLOR)
+        elif kind == "project":
+            name = xu.escape(row[1])
+            colour = PROJECT_DOTS[row[2] % len(PROJECT_DOTS)]
             a(f'<g{clip}>')
             a(f'<circle cx="{fmt(PAD_X + 3)}" cy="{fmt(y - 3.5)}" r="3.5" fill="{colour}"/>')
-            name = xu.escape(repo["name"])
-            star = (
-                f'<tspan fill="{AMBER}">  {repo["stars"]}&#9733;</tspan>'
-                if repo["stars"]
-                else ""
-            )
-            a(
-                f'<text x="{fmt(PAD_X + 13)}" y="{fmt(y)}" fill="{TEXT}">{name}'
-                f'<tspan fill="{DIM}">  {xu.escape(repo["language"] or "")}</tspan>'
-                f"{star}</text>"
-            )
+            a(f'<text x="{fmt(PAD_X + 13)}" y="{fmt(y)}" fill="{TEXT}">{name}</text>')
             a("</g>")
         elif kind == "counters":
             st = row[1]

@@ -38,7 +38,8 @@ MONO = ('ui-monospace, SFMono-Regular, Menlo, Consolas, '
 # The portrait and the info card sit side by side in the README, so both pad
 # out to this height rather than each guessing at the other's. Raise it if
 # either one's content outgrows it -- the scripts warn when that happens.
-CARD_H = 412.0
+# Tall enough for the curated 8-project Public work list on the info card.
+CARD_H = 476.0
 
 # Language colours, matching GitHub's own so they read as familiar.
 LANG_COLORS = {
