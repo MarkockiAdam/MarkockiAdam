@@ -1,0 +1,4 @@
+# The daily refresh only touches the contribution graph, so it needs nothing
+# beyond an HTTP client and an HTML parser.
+requests==2.32.3
+beautifulsoup4==4.12.3

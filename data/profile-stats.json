@@ -1,0 +1,62 @@
+{
+ "username": "MarkockiAdam",
+ "name": "Adam",
+ "generated_at": "2026-07-25T05:51:24Z",
+ "public_repos": 14,
+ "followers": 2,
+ "stars": 3,
+ "languages": [
+  {
+   "name": "HTML",
+   "repos": 8
+  },
+  {
+   "name": "JavaScript",
+   "repos": 2
+  },
+  {
+   "name": "TypeScript",
+   "repos": 2
+  },
+  {
+   "name": "Python",
+   "repos": 1
+  },
+  {
+   "name": "Shell",
+   "repos": 1
+  }
+ ],
+ "recent": [
+  {
+   "name": "Adam-Portfolio-Website",
+   "language": "JavaScript",
+   "description": "Adam Markocki \u2014 Macintosh 1984 portfolio",
+   "stars": 0
+  },
+  {
+   "name": "Kalkulator-Sejmowy",
+   "language": "HTML",
+   "description": "",
+   "stars": 0
+  },
+  {
+   "name": "ArgosTerminal",
+   "language": "TypeScript",
+   "description": "",
+   "stars": 0
+  },
+  {
+   "name": "Budzet-Polski",
+   "language": "JavaScript",
+   "description": "",
+   "stars": 1
+  },
+  {
+   "name": "Parlament",
+   "language": "TypeScript",
+   "description": "kto mnie reprezentuje?",
+   "stars": 1
+  }
+ ]
+}

@@ -1,0 +1,14 @@
+#!/bin/sh
+# Strip AI co-author / attribution trailers so only the repo owner appears
+# as a contributor on GitHub.
+msg_file="$1"
+[ -f "$msg_file" ] || exit 0
+tmp="$(mktemp)"
+# Drop Co-authored-by / Made-with / Signed-off lines that attribute Cursor or Claude.
+sed -E \
+  -e '/^Co-authored-by:.*[Cc]ursor/Id' \
+  -e '/^Co-authored-by:.*cursoragent@cursor\.com/Id' \
+  -e '/^Co-authored-by:.*[Cc]laude/Id' \
+  -e '/^Co-authored-by:.*noreply@anthropic\.com/Id' \
+  -e '/^Made-with:.*[Cc]ursor/Id' \
+  "$msg_file" > "$tmp" && mv "$tmp" "$msg_file"

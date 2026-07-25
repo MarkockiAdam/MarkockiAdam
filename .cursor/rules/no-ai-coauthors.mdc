@@ -1,0 +1,16 @@
+---
+description: Never attribute commits or PRs to Cursor, Claude, or other AI agents
+alwaysApply: true
+---
+
+# No AI co-contributors
+
+Never add any of the following to commit messages, PR bodies, or code comments:
+
+- `Co-authored-by: Cursor`
+- `Co-authored-by: cursoragent@cursor.com`
+- `Co-authored-by: Claude` / `noreply@anthropic.com`
+- `Made-with: Cursor`
+- Any other AI / agent attribution trailer
+
+Commits and PRs must be authored only as the repo owner (Adam / MarkockiAdam). Do not pass `--trailer` for AI tools. If a trailer is injected by the environment, strip it before pushing.
