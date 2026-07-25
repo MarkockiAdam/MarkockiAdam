@@ -5,7 +5,7 @@ Usage:
     python scripts/make_info_card.py
     STATIC=1 python scripts/make_info_card.py
 
-Writes info-card.svg. Edit ROWS / PUBLIC_WORK below to change the written
+Writes profile-card.svg. Edit ROWS / PUBLIC_WORK below to change the written
 content. Counters still come from data/profile-stats.json.
 
 Both this and the portrait pad out to theme.CARD_H so they sit level in the
@@ -31,7 +31,7 @@ from theme import (
     TEXT, fmt, glow_filter, window_chrome,
 )
 
-OUT = "info-card.svg"
+OUT = "profile-card.svg"
 STATS = os.path.join("data", "profile-stats.json")
 STATIC = os.environ.get("STATIC") == "1"
 

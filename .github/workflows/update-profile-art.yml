@@ -60,7 +60,7 @@ jobs:
           # Only the SVGs are checked: the JSON files carry a generated_at
           # stamp that changes every run, which would mean a commit a day
           # even when nothing actually moved.
-          if git diff --quiet -- contrib-heatmap.svg info-card.svg; then
+          if git diff --quiet -- contrib-heatmap.svg profile-card.svg; then
             echo "no change"
             exit 0
           fi
@@ -68,6 +68,6 @@ jobs:
           # on the contributors graph.
           git config user.name "Adam"
           git config user.email "97188913+MarkockiAdam@users.noreply.github.com"
-          git add contrib-heatmap.svg info-card.svg data/contributions.json data/profile-stats.json
+          git add contrib-heatmap.svg profile-card.svg data/contributions.json data/profile-stats.json
           git commit -m "chore: refresh contribution graph and info card"
           git push
