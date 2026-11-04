@@ -1,8 +1,8 @@
 {
  "username": "MarkockiAdam",
  "name": "Adam",
- "generated_at": "2026-11-03T10:58:07Z",
- "public_repos": 14,
+ "generated_at": "2026-11-04T11:02:17Z",
+ "public_repos": 15,
  "followers": 2,
  "stars": 4,
  "languages": [
@@ -29,6 +29,12 @@
  ],
  "recent": [
   {
+   "name": "warashi-releases",
+   "language": null,
+   "description": "Downloads and updates for Warashi, the flight recorder for your Mac. https://warashi.app",
+   "stars": 0
+  },
+  {
    "name": "Adam-Portfolio-Website",
    "language": "JavaScript",
    "description": "Adam Markocki \u2014 Macintosh 1984 portfolio",
@@ -50,12 +56,6 @@
    "name": "Budzet-Polski",
    "language": "JavaScript",
    "description": "",
-   "stars": 1
-  },
-  {
-   "name": "Parlament",
-   "language": "TypeScript",
-   "description": "kto mnie reprezentuje?",
    "stars": 1
   }
  ]
