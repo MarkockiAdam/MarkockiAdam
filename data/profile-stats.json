@@ -1,8 +1,8 @@
 {
  "username": "MarkockiAdam",
  "name": "Adam",
- "generated_at": "2026-11-07T10:21:02Z",
- "public_repos": 15,
+ "generated_at": "2026-11-09T11:42:23Z",
+ "public_repos": 17,
  "followers": 2,
  "stars": 4,
  "languages": [
@@ -29,6 +29,18 @@
  ],
  "recent": [
   {
+   "name": "almanac",
+   "language": null,
+   "description": "",
+   "stars": 0
+  },
+  {
+   "name": "hachi-feedback",
+   "language": null,
+   "description": "Feedback from the Hachi private alpha (no code here)",
+   "stars": 0
+  },
+  {
    "name": "warashi-releases",
    "language": null,
    "description": "Downloads and updates for Warashi, the flight recorder for your Mac. https://warashi.app",
@@ -45,18 +57,6 @@
    "language": "HTML",
    "description": "",
    "stars": 0
-  },
-  {
-   "name": "ArgosTerminal",
-   "language": "TypeScript",
-   "description": "",
-   "stars": 0
-  },
-  {
-   "name": "Budzet-Polski",
-   "language": "JavaScript",
-   "description": "",
-   "stars": 1
   }
  ]
 }
